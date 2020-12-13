@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{%static 'FACERECOG/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'FACERECOG/_bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'FACERECOG/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'FACERECOG/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'FACERECOG/bootstrap.css.map' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'FACERECOG/owl.carousel.min.css' %}">
+
+    {% if title %}
+        <title> FACE RECOGNITION {{ title }}</title>
+    {% else %}
+        <title> FACE RECOGNITION </title>
+    {% endif %}
+</head>
+
+<body id="#body">
+      <header class="site-header" role="banner">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+          <a class="navbar-brand mr-4" href="{%url 'main-page'  %}" style="font-size:25px;"><b>FACE</b></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <ul id="menu" class="navbar-nav pl-md-5 mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{%url 'main-page' %}" style="font-size:15px;"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'about' %}" style="font-size:15px;"><b>About</b></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:15px;"><b>Attendance Module</b></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a href="{%url 'face-recog' %}" class="dropdown-item"><b>Capture Faces</b></a>
+                        <a href="{%url 'face-detect-attendance' %}" class="dropdown-item"><b>Detect & Mark your Attendance</b></a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'contact' %}" style="font-size:15px;"><b>Contact</b></a>
+                </li>
+            </ul>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{%url 'profile' %}" style="font-size:15px;"><b>Profile</b></a>
+                <a class="nav-item nav-link" href="{%url 'logout' %}" style="font-size:15px;"><b>Logout</b></a>
+                {% else %}
+                <a class="nav-item nav-link" href="{%url 'login' %}" style="font-size:15px;"><b>Login</b></a>
+                <a class="nav-item nav-link" href="{%url 'register' %}" style="font-size:15px;"><b>Sign Up</b></a>
+                {% endif %}
+            </div>
+            </div>
+      </nav>
+    </header>
+
+    <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image:url('{%static "images/FaceRecognition.png" %}')">
+        <div class="container">
+          <div class="row slider-text align-items-center justify-content-center">
+            <div class="col-md-10 text-center col-sm-12 element-animate">
+              <h1 style="color:white;font-size:60px;padding-top:80px;"><i>Face Recognition</i></h1>
+              <p style="font-size:30px"><i>Mark Your Attendance through camera surveillance</i></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slider-item" style="background-image:url('{%static "images/facialrecognition1.png" %}');">
+        <div class="container">
+          <div class="row slider-text align-items-center justify-content-center">
+            <div class="col-md-10 text-center col-sm-12 element-animate">
+              <h1 style="color:white;font-size:60px;padding-top:80px;"><i>Face Recognition</i></h1>
+              <p style="font-size:30px"><i>“The best way to enhance security is through facial recognition — it's going to be the standard very soon.”</i></p>
+            </div>
+          </div>
+        </div>
+
+    </section>
+    <!-- END slider -->
+
+    <section class="section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 element-animate ">
+            <div class="media block-6 d-block text-center">
+              <div class="icon mb-3"><span class="fa fa-video-camera"></span></div>
+              <div class="media-body">
+                <h3 class="heading">Live Camera Surveillance</h3>
+                <p>Mark your Attendance through Live camera surveillance </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 element-animate ">
+            <div class="media block-6 d-block text-center">
+              <div class="icon mb-3"><span class="fa fa-file"></span></div>
+              <div class="media-body">
+                <h3 class="heading">Maintained Records</h3>
+                <p>Now Easy & Smartest way to maintain the records of your presence</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6 col-lg-4 element-animate ">
+            <div class="media block-6 d-block text-center">
+              <div class="icon mb-3"><span class="fa fa-user"></span></div>
+              <div class="media-body">
+                <h3 class="heading">Face Digitization</h3>
+                <p>Smart Algorithms give your face be marked as a Proof of your presence</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section element-animate" style="background-color:#bbaaff">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-5 pr-md-5 mb-5">
+            <div class="block-41">
+              <div class="block-41-subheading d-flex">
+                <div class="block-41-number"><b>01</b></div>
+                <div class="block-41-line align-self-center mx-2"></div>
+                  <div class="block-41-subheading-2"><b>Digitizing</b></div>
+              </div>
+              <h2 class="block-41-heading mb-5">Make it Easy</h2>
+              <div class="block-41-text">
+                <p>Quantum machine learning promises to discover the optimal network topologies and hyperparameters automatically without human intervention</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <img src="{%static 'images/deeplearningimage.jpg' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section element-animate bg-dark">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-5 pl-md-5 mb-5 order-md-2">
+            <div class="block-41">
+              <div class="block-41-subheading d-flex">
+                  <div class="block-41-number"><b style="color:white">02</b></div>
+                <div class="block-41-line align-self-center mx-2"></div>
+                  <div class="block-41-subheading-2" style="color:white"><b>Face Recognition</b></div>
+              </div>
+              <h2 class="block-41-heading mb-5" style="color:white">Live Camera Surveillance</h2>
+              <div class="block-41-text">
+                <p style="color:white">Attendance through Face recognition is a smartest & fastest way to mark the attendance & just make it easy for maintaining the records </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7 order-md-1">
+            <img src="{%static 'images/camerasurveillance.jpg' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section element-animate" style="background-color:#bbaaff">
+        <div class="container">
+            <div class="row element-animate">
+                <div class="col">
+                    <center><h1 style="font-size:100px;padding:55px;padding-bottom:60px;">Detection</h1></center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col element-animate" style="padding-bottom:80px">
+                    <img src="{%static 'images/p1.png'%}" alt="Image" class="img-fluid">
+                </div>
+                <div class="col element-animate">
+                    <img src="{%static 'images/p2.png'%}" alt="Image" class="img-fluid">
+                </div>
+                <div class="col element-animate">
+                    <img src="{%static 'images/p3.png'%}" alt="Image" class="img-fluid">
+                </div>
+                <div class="col element-animate">
+                    <img src="{%static 'images/p4.png'%}" alt="Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer bg-dark" role="contentinfo">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-5">
+            <h3 style="color:white;">Auriga IT Attendance System</h3>
+            <p class="mb-5 text-info">Attendance through face recognition using camera surveillance</p>
+            <ul class="list-unstyled footer-link d-flex footer-social">
+              <li><a href="https://twitter.com/aurigait?lang=en" class="p-2 text-danger" style="font-size:20px;"><span class="fa fa-twitter"></span></a></li>
+              <li><a href="https://www.facebook.com/AurigaIT/" class="p-2 text-danger" style="font-size:20px;"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="https://in.linkedin.com/company/aurigait" class="p-2 text-danger" style="font-size:20px;"><span class="fa fa-linkedin"></span></a></li>
+              <li><a href="#" class="p-2 text-danger" style="font-size:20px;"><span class="fa fa-instagram"></span></a></li>
+            </ul>
+
+          </div>
+          <div class="col-md-5 mb-5 pl-md-5">
+            <h3 style="color:white;padding-bottom:3px;">Contact Info</h3>
+            <ul class="list-unstyled footer-link">
+              <li class="d-block">
+                <span class="d-block text-info">Address:</span>
+                <span class="text-white">4th floor UDB landmark complex plot no A6, Tonk Rd, Basant Bahar, Gopal Pura Mode, Jaipur, Rajasthan 302018</span></li>
+              <li class="d-block"><span class="d-block text-info">Telephone:</span><span class="text-white">063772 01301</span></li>
+              <li class="d-block"><span class="d-block text-info">Email:</span><span class="text-white">contactus@aurigait.com</span></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5">
+            <h3 style="color:white;padding-bottom:3px;">Quick Links</h3>
+            <ul class="list-unstyled footer-link">
+                <li><a href="{%url 'about' %}" class="text-danger"><b>About Us</b></a></li>
+                <li><a href="#" class="text-danger"><b>Contact Us</b></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-md-center text-left">
+            <p style="color:white;">
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>. All rights reserved
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END footer -->
+
+<!-- loader -->
+<div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="{%static 'FACERECOG/jquery-3.2.1.min.js' %}"></script>
+<script src="{%static 'FACERECOG/popper.min.js' %}"></script>
+<script src="{%static 'FACERECOG/bootstrap.min.js' %}"></script>
+<script src="{%static 'FACERECOG/owl.carousel.min.js' %}"></script>
+<script src="{%static 'FACERECOG/jquery.waypoints.min.js' %}"></script>
+<script src="{%static 'FACERECOG/main.js' %}"></script>
+</body>
+</html>
